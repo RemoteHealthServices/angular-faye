@@ -10,7 +10,10 @@ Faye client wrapper for angular
 app = angular.module('myapp', ['faye'])
 
 app.factory 'Faye', ['$faye', ($faye) ->
-  $faye("http://localhost:9292/faye") # set faye url in one place
+  $faye("http://localhost:9292/faye", (->), 
+    endpoints:
+      websocket: "ws://localhost:9292/"  
+  ) # set faye url in one place
 ]
 
 @TestCtrl = ($scope, $http, Faye) ->
